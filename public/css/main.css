@@ -1,0 +1,91 @@
+
+body{
+    font-family: "Roboto","segoe ui",Helvetica,Arial,sans-serif!important;
+    font-size: 1rem;
+    color: white !important;
+    transition: 0.5s;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-content{
+    position: relative;
+    background-color: #192536 !important;
+    min-height: 650px;
+}
+
+/* header */
+.fixed-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+section.mid-gap {
+    height: 110px;
+}
+
+a:hover {
+    color: #219961 !important;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+ .navbar-nhacvn .login-link .navbar-nav .nav-link{
+     color: white ;
+ }
+ .navbar-nhacvn .input-search {
+     width: 324px;
+ }
+.navbar-nhacvn {
+    background-color: #21324A !important;
+    font-weight: 700;
+    border-bottom: 2px black solid;
+}
+
+.baihatNavbar {
+    background-color: #21324A !important;
+}
+.baihatNavbar a{
+    color: gray !important;
+}
+
+/* footer */
+footer {
+    min-height: 340px;
+    background-color: #21324A !important;
+}
+
+footer .line {
+    border-top: 1px gray dotted;
+}
+
+/* Login */
+.login-box {
+    margin: 0 auto;
+    width: 380px;
+}
+.login-menu{
+    border-radius: 5px;
+    background-color: #21324A !important;
+    width: 380px;
+    position: relative;
+    padding: 30px 48px;
+    overflow: hidden;
+    top: 50px;
+}
+
+
+
+.invalidFeedback {
+    color: #ff0000;
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    text-align: center;
+}
