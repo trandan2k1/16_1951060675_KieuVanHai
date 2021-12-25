@@ -3,9 +3,12 @@
 class Users extends Controller {
     public function __construct() {
         $this->userModel = $this->model('User');
+        $this->songModel = $this->model('Song');
     }
 
     public function register() {
+        $vn = $this->songModel->cate_song("Việt Nam");
+        $usuk = $this->songModel->cate_song("Âu Mỹ");
         $data = [
             'username' => '',
             'email' => '',
@@ -15,7 +18,11 @@ class Users extends Controller {
             'usernameError' => '',
             'emailError' => '',
             'passwordError' => '',
-            'confirmPasswordError' => ''
+            'confirmPasswordError' => '',
+            'title' =>'NhacVn',
+            'list_vn'   => $vn,
+            'list_usuk' => $usuk,
+
         ];
 
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -33,7 +40,8 @@ class Users extends Controller {
                 'usernameError' => '',
                 'emailError' => '',
                 'passwordError' => '',
-                'confirmPasswordError' => ''
+                'confirmPasswordError' => '',
+                'title' => 'NhacVn'
             ];
 
             $nameValidation = "/^[a-zA-Z0-9]*$/";
@@ -90,7 +98,7 @@ class Users extends Controller {
                 //Register user from model function
                 if ($this->userModel->register($data)) {
                     //Redirect to the login page
-                    header('location: ' . URLROOT . '/users/login?Message=' . urlencode($Message));
+                    header('location: ' . URLROOT . '/users/login?Message=');
                 } else {
                     die('Something went wrong.');
                 }
@@ -101,11 +109,10 @@ class Users extends Controller {
 
     public function login() {
         $data = [
-            'title' => 'Login page',
+            'title' => 'NhacVn',
             'username' => '',
             'password' => '',
-            'usernameError' => '',
-            'passwordError' => ''
+            'usernameError' => ''
         ];
 
         //Check for post
@@ -118,10 +125,16 @@ class Users extends Controller {
                 'password' => trim($_POST['password']),
                 'usernameError' => '',
                 'passwordError' => '',
+                'title' =>'NhacVn'
             ];
             //Validate username
             if (empty($data['username'])) {
                 $data['usernameError'] = 'Vui lòng nhập tên đăng nhập hoặc email';
+            } else {
+                //Check if username exists.
+                if (!$this->userModel->findUserByUsername($data['username'])) {
+                $data['usernameError'] = 'Tên đăng nhập không tồn tại';
+                }
             }
 
             //Validate password
@@ -147,7 +160,8 @@ class Users extends Controller {
                 'username' => '',
                 'password' => '',
                 'usernameError' => '',
-                'passwordError' => ''
+                'passwordError' => '',
+                'title' =>'NhacVn'
             ];
         }
         $this->view('users/login', $data);

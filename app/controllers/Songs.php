@@ -1,5 +1,5 @@
 <?php
-class Pages extends Controller
+class Songs extends Controller
 {
     public function __construct()
     {
@@ -8,19 +8,21 @@ class Pages extends Controller
 
     public function index()
     {
+        $id = -1;
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+        }
+        $song = $this->songModel->getSong($id);
         $vn = $this->songModel->cate_song("Việt Nam");
         $usuk = $this->songModel->cate_song("Âu Mỹ");
-        $newsong = $this->songModel->getNewSong();
-
         $data = [
             'title' => 'NhacVn',
             'list_vn'   => $vn,
             'list_usuk' => $usuk,
-            'new_song' => $newsong
+            'song' => $song
         ];
-
-        $this->view('index', $data);
+        $this->view('songs/bai-hat', $data);
     }
 
-    
+
 }

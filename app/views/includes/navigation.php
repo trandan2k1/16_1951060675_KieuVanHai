@@ -53,7 +53,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                       data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-user-circle"></i>
-                      <?php echo $_SESSION['username'] ?>
+                      <?php echo $_SESSION['user_id'].".".$_SESSION['username'] ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                       <li><a class="dropdown-item" href="#">Nhạc yêu thích</a></li>
@@ -104,12 +104,10 @@
               BXH
             </a>
             <ul class="dropdown-menu" aria-labelledby="bxhDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item text-center fs-5"> Việt Nam</a></li>
+              <?php foreach($data['list_vn'] as $post): ?>
+                <li><a class="dropdown-item" href="#"><?php echo $post->cate_name ?></a></li>
+                <?php endforeach; ?>
             </ul>
           </li>
           <li class="nav-item dropdown me-5">
@@ -117,7 +115,7 @@
               aria-expanded="false">
               Album
             </a>
-            <ul class="dropdown-menu" aria-labelledby="albumDropdown">
+            <ul class="dropdown-menu " aria-labelledby="albumDropdown">
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li>
@@ -147,5 +145,3 @@
     </div>
   </nav>
 </header>
-
-<section class="mid-gap"></section>

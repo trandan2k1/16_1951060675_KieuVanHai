@@ -12,7 +12,9 @@ body{
 .main-content{
     position: relative;
     background-color: #192536 !important;
-    min-height: 650px;
+    min-height: 700px;
+    overflow: hidden;
+    margin-top: 120px;
 }
 
 /* header */
@@ -24,9 +26,11 @@ body{
     left: 0;
     z-index: 1000;
 }
-section.mid-gap {
+/* section.mid-gap {
     height: 110px;
-}
+    position: fixed;
+    top: 0;
+} */
 
 a:hover {
     color: #219961 !important;
@@ -88,4 +92,23 @@ footer .line {
     font-size: 0.8rem;
     margin-top: 5px;
     text-align: center;
+}
+.line{
+    border-bottom:1px dotted gray ;
+}
+
+.singer_list img{
+    width: 58px;
+    height: 58px;
+}
+.newSong-item a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 0.8rem;
+}
+.newSong_singer {
+    font-size: 0.8rem !important;
+    font-weight: 300;
+    color: #6a8385 !important;
 }
