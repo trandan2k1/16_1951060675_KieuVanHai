@@ -4,28 +4,28 @@ class User {
     public function __construct() {
         $this->db = new Database;
     }
-
+    // Đăng ký user mới
     public function register($data) {
         $this->db->query('INSERT INTO users (username, email, email_verification_link ,password) VALUES(:username, :email,:email_verification_link, :password)');
 
-        //Bind values
+
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':email_verification_link', $data['email_verification_link']);
         $this->db->bind(':password', $data['password']);
 
-        //Execute function
+        
         if ($this->db->execute()) {
             return true;
         } else {
             return false;
         }
     }
-
+    // Check password gửi vào hàm trùng với trong csdl trả về thông tin user
     public function login($username, $password) {
         $this->db->query('SELECT * FROM users WHERE username = :username');
 
-        //Bind value
+        
         $this->db->bind(':username', $username);
 
         $row = $this->db->single();
@@ -39,29 +39,28 @@ class User {
         }
     }
 
-    //Find user by email. Email is passed in by the Controller.
+    // Tìm user bằng email , email đc gửi từ controller
     public function findUserByEmail($email) {
-        //Prepared statement
+
         $this->db->query('SELECT * FROM users WHERE email = :email');
 
-        //Email param will be binded with the email variable
+
         $this->db->bind(':email', $email);
 
-        //Check if email is already registered
         if(!$this->db->rowCount()) {
             return false;
         } else {
             return true;
         }
     }
+    // Tìm user bằng username , email đc gửi từ controller
     public function findUserByUsername($username) {
-        //Prepared statement
+
         $this->db->query('SELECT * FROM users WHERE username = :username');
 
-        //username param will be binded with the username variable
         $this->db->bind(':username', $username);
 
-        //Check if username is already registered
+
         if(!$this->db->rowCount()) {
             return false;
         } else {

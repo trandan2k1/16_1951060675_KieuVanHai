@@ -5,7 +5,7 @@ class Pages extends Controller
     {
         $this->songModel = $this->model('Song');
     }
-
+    //Trang chủ home page
     public function index()
     {
         $vn = $this->songModel->cate_song("Việt Nam");

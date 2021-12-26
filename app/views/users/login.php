@@ -15,9 +15,6 @@ require APPROOT . '/views/includes/navigation.php';
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nhập tên đăng nhập hoặc email</label>
                         <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
-                        <span class="invalidFeedback">
-                            <?php echo $data['usernameError']; ?>
-                        </span>
                         <div id="emailHelp" class="form-text">VD:abc123, abcdef@gmail.com</div>
                     </div>
                     <div class="mb-4">
@@ -25,6 +22,9 @@ require APPROOT . '/views/includes/navigation.php';
                         <input type="password" class="form-control" name="password">
                         <span class="invalidFeedback">
                             <?php echo $data['passwordError']; ?>
+                        </span>
+                        <span class="invalidFeedback">
+                            <?php echo $data['usernameError']; ?>
                         </span>
                     </div>
                     <div class="d-grid gap-2 mx-auto">

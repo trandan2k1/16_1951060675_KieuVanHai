@@ -56,7 +56,7 @@
                       <?php echo $_SESSION['username'] ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                      <li><a class="dropdown-item" href="#">Nhạc yêu thích</a></li>
+                      <li><a class="dropdown-item" href="">Nhạc yêu thích</a></li>
                       <li><a class="dropdown-item" href="#">Tài khoản</a></li>
                       <li><a class="dropdown-item" href="#">Nghe gần đây</a></li>
                       <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/users/logout">Log out</a></li>
@@ -106,7 +106,7 @@
             <ul class="dropdown-menu" aria-labelledby="bxhDropdown">
             <li><a class="dropdown-item text-center fs-5"> Việt Nam</a></li>
               <?php foreach($data['list_vn'] as $post): ?>
-                <li><a class="dropdown-item" href="#"><?php echo $post->cate_name ?></a></li>
+                <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/songs/cate/?id=<?php echo $post->Id ?>"><?php echo $post->cate_name ?></a></li>
                 <?php endforeach; ?>
             </ul>
           </li>

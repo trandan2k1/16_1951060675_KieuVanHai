@@ -23,12 +23,12 @@
             }
         }
 
-        //Allows us to write queries
+        // Cho phép viết câu truy vấn sql
         public function query($sql) {
             $this->statement = $this->dbHandler->prepare($sql);
         }
 
-        //Bind values
+        //Gắn values
         public function bind($parameter, $value, $type = null) {
             switch (is_null($type)) {
                 case is_int($value):
@@ -46,24 +46,24 @@
             $this->statement->bindValue($parameter, $value, $type);
         }
 
-        //Execute the prepared statement
+        //Thực hiện câu lệnh đã chuẩn bị
         public function execute() {
             return $this->statement->execute();
         }
 
-        //Return an array
+        //Trả về mảng các bản ghi
         public function resultSet() {
             $this->execute();
             return $this->statement->fetchAll(PDO::FETCH_OBJ);
         }
 
-        //Return a specific row as an object
+        //Trả về một bản ghi
         public function single() {
             $this->execute();
             return $this->statement->fetch(PDO::FETCH_OBJ);
         }
 
-        //Get's the row count
+        //Đếm hàng
         public function rowCount() {
             $this->execute();
             return $this->statement->fetchAll(PDO::FETCH_OBJ);
