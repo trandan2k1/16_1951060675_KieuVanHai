@@ -17,8 +17,8 @@ require APPROOT . '/views/includes/navigation.php';
                                 <div class="col-2 singer_list mb-3">
                                     <img src="<?php echo $post->sg_img ?>" alt="">
                                 </div>
-                                <div class="col-10">
-                                    <a class="mb-1 mt-3" href="<?php echo URLROOT; ?>/songs/bai-hat/?id=<?php echo $post->id ?>"><?php echo $post->name ?></a>
+                                <div class="col-md-10">
+                                    <a class="mb-1 mt-3" href="<?php echo URLROOT; ?>/songs/baihat/?id=<?php echo $post->id ?>"><?php echo $post->name ?></a>
                                     <a class="newSong_singer" href="<?php echo URLROOT; ?>/songs/nghe-si/?id=<?php echo $post->sg_id ?>"><?php echo $post->sg_name ?></a>
                                 </div>
                             </div>

@@ -16,7 +16,7 @@ class Song {
     return $this->db->resultSet();
    }
    public function getSong($id) {
-    $this->db->query('SELECT * FROM songs WHERE Id= :id');
+    $this->db->query('SELECT * FROM baihat WHERE Id= :id');
     $this->db->bind(':id', $id);
     return  $this->db->single();
    }

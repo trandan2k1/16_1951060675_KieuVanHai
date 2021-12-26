@@ -6,6 +6,9 @@ class Users extends Controller {
         $this->songModel = $this->model('Song');
     }
 
+    public function index(){
+        $this->view('404');
+    }
     public function register() {
         $vn = $this->songModel->cate_song("Việt Nam");
         $usuk = $this->songModel->cate_song("Âu Mỹ");

@@ -8,9 +8,15 @@ class Songs extends Controller
 
     public function index()
     {
+        $this->view('404');
+    }
+    public function baihat()
+    {
         $id = -1;
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
+        } else {
+            $this->view('404');
         }
         $song = $this->songModel->getSong($id);
         $vn = $this->songModel->cate_song("Việt Nam");
@@ -23,6 +29,4 @@ class Songs extends Controller
         ];
         $this->view('songs/bai-hat', $data);
     }
-
-
 }

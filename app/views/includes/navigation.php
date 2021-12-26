@@ -53,7 +53,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                       data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-user-circle"></i>
-                      <?php echo $_SESSION['user_id'].".".$_SESSION['username'] ?>
+                      <?php echo $_SESSION['username'] ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                       <li><a class="dropdown-item" href="#">Nhạc yêu thích</a></li>

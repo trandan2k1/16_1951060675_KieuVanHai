@@ -112,3 +112,29 @@ footer .line {
     font-weight: 300;
     color: #6a8385 !important;
 }
+
+/* Readmore */
+#more {
+    display: none;
+}
+
+
+/* Bài hát */
+.song-box {
+    margin: 0 auto;
+    width: 100%;
+    background:  linear-gradient(155deg, rgba(2,0,36,1) 0%, rgba(9,121,89,1) 50%, rgba(0,212,255,1) 100%) !important;
+    border-radius: 5px;
+}
+.song-menu{
+    border-radius: 5px;
+    width: 500px;
+    padding: 10px 15px;
+    position: relative;
+    left: 20px;
+}
+.song-play{
+    width: 360px;
+}
+
+
