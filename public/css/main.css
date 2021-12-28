@@ -137,4 +137,19 @@ footer .line {
     width: 360px;
 }
 
+.readMore-link{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Nghệ sĩ */
+
+.singer_banner {
+    background-size: cover !important;
+    height: 50%;
+    width: 90%;
+    background-repeat: no-repeat !important;
+    margin: 0 auto;
+}
+
 

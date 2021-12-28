@@ -16,5 +16,5 @@
                 die("View does not exists.");
             }
         }
-        // public function sendmail()
+       
     }

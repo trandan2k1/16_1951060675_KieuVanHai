@@ -114,7 +114,8 @@ class Users extends Controller {
             'title' => 'NhacVn',
             'username' => '',
             'password' => '',
-            'usernameError' => ''
+            'usernameError' => '',
+            'status' => ''
         ];
 
         //Check for post
@@ -125,6 +126,7 @@ class Users extends Controller {
             $data = [
                 'username' => trim($_POST['username']),
                 'password' => trim($_POST['password']),
+                'status' => '',
                 'usernameError' => '',
                 'passwordError' => '',
                 'title' =>'NhacVn'
@@ -133,8 +135,8 @@ class Users extends Controller {
             if (empty($data['username'])) {
                 $data['usernameError'] = 'Vui lòng nhập tên đăng nhập hoặc email';
             } else {
-                //Kiểm tra email đã tồn tại hay chưa
-                if (!$this->userModel->findUserByUsername($data['username'])) {
+                //Kiểm tra username hay email đã tồn tại hay chưa
+                if (!$this->userModel->findUserByUsernameOrEmail($data['username'])) {
                 $data['usernameError'] = 'Tên tài khoản hoặc mật khẩu không chính xác';
                 }
             }
@@ -161,6 +163,7 @@ class Users extends Controller {
             $data = [
                 'username' => '',
                 'password' => '',
+                'status' => '',
                 'usernameError' => '',
                 'passwordError' => '',
                 'title' =>'NhacVn'
@@ -173,6 +176,7 @@ class Users extends Controller {
         $_SESSION['user_id'] = $user->id;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
+        $_SESSION['status'] = $user->status;
         header('location:' . URLROOT . '/pages/index');
     }
 
@@ -180,6 +184,7 @@ class Users extends Controller {
         unset($_SESSION['user_id']);
         unset($_SESSION['username']);
         unset($_SESSION['email']);
+        unset($_SESSION['status']);
         header('location:' . URLROOT . '/users/login');
     }
 }

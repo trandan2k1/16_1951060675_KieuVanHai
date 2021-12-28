@@ -19,7 +19,7 @@ require APPROOT . '/views/includes/navigation.php';
                                 </div>
                                 <div class="col-md-10">
                                     <a class="mb-1 mt-3" href="<?php echo URLROOT; ?>/songs/baihat/?id=<?php echo $post->id ?>"><?php echo $post->name ?></a>
-                                    <a class="newSong_singer" href="<?php echo URLROOT; ?>/songs/nghe-si/?id=<?php echo $post->sg_id ?>"><?php echo $post->sg_name ?></a>
+                                    <a class="newSong_singer" href="<?php echo URLROOT; ?>/songs/nghesi/?id=<?php echo $post->sg_id ?>"><?php echo $post->sg_name ?></a>
                                 </div>
                             </div>
                             <div class="line"></div>

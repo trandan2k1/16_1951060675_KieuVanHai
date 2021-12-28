@@ -23,19 +23,37 @@ class User {
     }
     // Check password gửi vào hàm trùng với trong csdl trả về thông tin user
     public function login($username, $password) {
-        $this->db->query('SELECT * FROM users WHERE username = :username');
+        $this->db->query('SELECT * FROM users WHERE username = :username OR email = :username');
 
         
         $this->db->bind(':username', $username);
-
         $row = $this->db->single();
 
         $hashedPassword = $row->password;
 
         if (password_verify($password, $hashedPassword)) {
-            return $row;
+            if($row->status != 0) {
+                return $row;
+            }
+            else {
+                return false;
+            }
         } else {
             return false;
+        }
+    }
+
+    public function findUserByUsernameOrEmail($username) {
+
+        $this->db->query('SELECT * FROM users WHERE email = :email OR username = :email');
+
+
+        $this->db->bind(':email', $username);
+
+        if(!$this->db->rowCount()) {
+            return false;
+        } else {
+            return true;
         }
     }
 

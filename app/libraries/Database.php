@@ -27,7 +27,10 @@
         public function query($sql) {
             $this->statement = $this->dbHandler->prepare($sql);
         }
-
+        //Lấy ra id vừa mới được thêm vào csdl
+        public function last_id() {
+            return $this->dbHandler->lastInsertId();
+        }
         //Gắn values
         public function bind($parameter, $value, $type = null) {
             switch (is_null($type)) {

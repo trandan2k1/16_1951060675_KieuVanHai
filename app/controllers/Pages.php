@@ -18,7 +18,6 @@ class Pages extends Controller
             'list_usuk' => $usuk,
             'new_song' => $newsong
         ];
-
         $this->view('index', $data);
     }
 
