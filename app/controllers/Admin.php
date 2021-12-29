@@ -9,7 +9,7 @@ class Admin extends Controller
     // Kiểm tra có session với status = 2 mới được phép vào trang admin
     public function index()
     {
-        if (!empty($_SESSION['status'])) {
+        if (isLoggedIn()) {
             if ($_SESSION['status'] == 2) {
                 $data = [
                     'title' => 'NhacVn'

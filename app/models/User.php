@@ -86,4 +86,23 @@ class User {
         }
     }
 
+    public function checkMailVerify($token,$email){
+        $this->db->query('SELECT * FROM users WHERE email_verification_link= :email_verification_link and email= :email');
+        $this->db->bind(':email_verification_link', $token);
+        $this->db->bind(':email', $email);
+        return $this->db->single()->email_verified_at;
+    }
+
+    public function mailVerify($email){
+        $this->db->query('SELECT CURRENT_TIMESTAMP');
+        $email_verified_at = $this->db->single()->CURRENT_TIMESTAMP;
+        $this->db->query('UPDATE users SET email_verified_at = :email_verified_at , status = 1 WHERE email= :email ');
+        $this->db->bind(':email_verified_at', $email_verified_at);
+        $this->db->bind(':email', $email);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

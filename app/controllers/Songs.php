@@ -17,8 +17,7 @@ class Songs extends Controller
 
     public function baihat()
     {
-        
-        if(!empty($_SESSION['user_id'])){
+        if(isLoggedIn()){
             if (isset($_GET['id'])) {
                 $id_song = $_GET['id'];
             }
@@ -102,7 +101,7 @@ class Songs extends Controller
     }
 
     public function yeuthich(){
-        if(!empty($_SESSION['user_id'])){
+        if(isLoggedIn()){
             if (isset($_GET['id'])) {
                 $id_song = $_GET['id'];
                 if(!$this->songModel->check_favorite($_SESSION['user_id'],$id_song)){

@@ -11,9 +11,9 @@ require APPROOT . '/views/includes/navigation.php';
             <div class="col-8">
                 <div class="newSong row">
                     <h3 class="mt-5">Thể loại:
-                        <a class="" href="<?php echo URLROOT; ?>/songs/nghesi/?id=<?php echo $data['song'][0]->cate_id ?>">
+                        <span>
                         <?php echo $data['song'][0]->cate_name ?>
-                        </a>
+                        </span>
                     </h3>
                     <div class="line mt-3"></div>
                     <?php foreach ($data['song'] as $post) : ?>

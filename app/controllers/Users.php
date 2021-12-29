@@ -36,9 +36,11 @@ class Users extends Controller {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $token = md5($_POST['email']).rand(10,9999);
                 $email = trim($_POST['email']);
+                $link = "<a href='localhost/NhacVn/email_verification/verify_email?key=".$_POST['email']."&token=".$token."'>Click and Verify Email</a>";
+                $this->goimail($link,$email);
               $data = [
                 'username' => trim($_POST['username']),
-                'email' => trim($_POST['email']),
+                'email' => $email,
                 'email_verification_link' => $token,
                 'password' => trim($_POST['password']),
                 'confirmPassword' => trim($_POST['confirmPassword']),

@@ -33,7 +33,7 @@ require APPROOT . '/views/includes/navigation.php';
                         </div>
                     </div>
                 </div>
-                <a href="<?php echo URLROOT; ?>/songs/yeuthich/?id=<?php echo $data['song']->Id ?>">Yêu thích</a>
+                <a id="btnLike" href="<?php echo URLROOT; ?>/songs/yeuthich/?id=<?php echo $data['song']->Id ?>">Yêu thích</a>
                 <div class="lyric-box">
                     <h5 class="mt-5 mb-4">Lời bài hát</h5>
                     <?php echo $data['song']->lyrics ?>
