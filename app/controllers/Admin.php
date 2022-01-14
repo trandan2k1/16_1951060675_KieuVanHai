@@ -11,10 +11,15 @@ class Admin extends Controller
     {
         if (isLoggedIn()) {
             if ($_SESSION['status'] == 2) {
+                $songs = $this->adminModel->getSongs();
+                var_dump($songs);exit;
+
                 $data = [
-                    'title' => 'NhacVn'
+                    'title' => 'NhacVn', 
+                    'songs' => $songs
+  
                 ];
-                $this->view('admin/adminView', $data);
+                $this->view('admin/adminAdd', $data);
             } else {
                 $this->view('404');
             }
