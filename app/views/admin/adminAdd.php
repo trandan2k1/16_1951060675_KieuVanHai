@@ -1,5 +1,5 @@
 <?php
-require_once'views/includes/head.php';
+require APPROOT . '/views/includes/head.php';
 ?>
 
 <div class ="container">
@@ -42,3 +42,7 @@ require_once'views/includes/head.php';
   <input type="submit" name="submit" value="Save" class="btn btn-primary">
 
 </div>
+
+<?php
+require APPROOT . '/views/includes/footer.php';
+?>
