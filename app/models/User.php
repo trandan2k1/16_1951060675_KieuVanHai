@@ -13,8 +13,7 @@ class User {
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':email_verification_link', $data['email_verification_link']);
         $this->db->bind(':password', $data['password']);
-
-        
+ 
         if ($this->db->execute()) {
             return true;
         } else {
@@ -104,5 +103,16 @@ class User {
         } else {
             return false;
         }
+    }
+
+    public function getFavoriteSong($user_id){
+        $this->db->query('SELECT * FROM baihatyeuthich WHERE user_id = :user_id');
+        $this->db->bind(':user_id', $user_id);
+        return  $this->db->resultSet();
+    }
+    public function baihatdanghe($user_id){
+        $this->db->query('SELECT * FROM lichsu WHERE user_id = :user_id');
+        $this->db->bind(':user_id', $user_id);
+        return  $this->db->resultSet();
     }
 }

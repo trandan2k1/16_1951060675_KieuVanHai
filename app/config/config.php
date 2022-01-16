@@ -11,5 +11,3 @@
     //URLROOT (Dynamic links)
     define('URLROOT', 'http://localhost/Nhacvn');
 
-    //Sitename
-    define('SITENAME', 'Login & Register script');

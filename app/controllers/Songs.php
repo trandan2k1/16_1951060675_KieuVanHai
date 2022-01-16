@@ -18,18 +18,19 @@ class Songs extends Controller
     public function baihat()
     {
         if(isLoggedIn()){
-            if (isset($_GET['id'])) {
+            if ($_GET['id'] != NULL) {
                 $id_song = $_GET['id'];
+            }else{
+                header('location:' . URLROOT . '/index');
             }
-            $id = $this->songModel->getIdUserActivity($_SESSION['user_id'],$id_song);
-            if($id != "-1"){
+            if($this->songModel->check_listen($_SESSION['user_id'],$id_song)){
+                $id = $this->songModel->getIdUserActivity($_SESSION['user_id'],$id_song);
                 $this->songModel->update_user_activity($id);
-            }
+            } 
             else{
                 $this->songModel->user_activity($_SESSION['user_id'],$id_song);
             }
         }
-        $id = -1;
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
         } else {
@@ -54,7 +55,7 @@ class Songs extends Controller
     public function cate()
     {
         $id = -1;
-        if (isset($_GET['id'])) {
+        if ($_GET['id'] != NULL) {
             $id = $_GET['id'];
         } else {
             $this->view('404');
@@ -78,8 +79,7 @@ class Songs extends Controller
         $nghesi = $this->songModel->getSingerList();
         $vn = $this->songModel->cate_song("Việt Nam");
         $usuk = $this->songModel->cate_song("Âu Mỹ");
-        $id = -1;
-        if (isset($_GET['id'])) {
+        if (isset($_GET['id']) and $_GET['id'] != NULL) {
             $id = $_GET['id'];
             $song = $this->songModel->getCateSong($id);
             $data = [
@@ -102,7 +102,7 @@ class Songs extends Controller
 
     public function yeuthich(){
         if(isLoggedIn()){
-            if (isset($_GET['id'])) {
+            if ($_GET['id'] != NULL) {
                 $id_song = $_GET['id'];
                 if(!$this->songModel->check_favorite($_SESSION['user_id'],$id_song)){
                     $this->songModel->add_favorite_song($_SESSION['user_id'],$id_song);
@@ -114,6 +114,9 @@ class Songs extends Controller
             } else {
                 $this->view('404');
             }
+        }
+        else {
+            header('location:' . URLROOT . '/users/login');
         }
     }
 

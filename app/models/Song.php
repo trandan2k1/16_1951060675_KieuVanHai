@@ -50,6 +50,31 @@ class Song
         return  $this->db->resultSet();
     }
 
+    //Gửi dữ liệu người dùng nghe nhạc lên database
+    public function user_activity($user_id,$id_song){
+        $this->db->query('SELECT CURRENT_TIMESTAMP');
+        $listen_at = $this->db->single()->CURRENT_TIMESTAMP;
+
+        $this->db->query('INSERT INTO user_listen ( id,`user_id`, `listen_at`, `last_listen`) VALUES ("",:user_id,:listen_at,:last_listen)');
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':listen_at', $listen_at);
+        $this->db->bind(':last_listen', NULL);
+        if ($this->db->execute()) {
+            $id_listen = $this->db->last_id();
+            $this->db->query('INSERT INTO detail_user_listen ( id_song,id_listen) VALUES (:id_song,:id_listen)');
+            $this->db->bind(':id_song', $id_song);
+            $this->db->bind(':id_listen', $id_listen);
+            if ($this->db->execute()) {
+                $result = true;
+            } else {
+                $result = false;
+            }
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
+    
     public function check_listen($user_id,$id_song){
         $this->db->query('SELECT * FROM lichsu WHERE user_id = :user_id AND id_song = :id_song ');
         $this->db->bind(':user_id', $user_id);
@@ -61,32 +86,6 @@ class Song
         }
     }
 
-    //Gửi dữ liệu người dùng nghe nhạc lên database
-    public function user_activity($user_id,$id_song){
-        $this->db->query('SELECT CURRENT_TIMESTAMP');
-        $listen_at = $this->db->single()->CURRENT_TIMESTAMP;
-
-        $this->db->query('INSERT INTO user_listen ( id,`user_id`, `listen_at`, `last_listen`) VALUES ("",:user_id,:listen_at,:last_listen)');
-        $this->db->bind(':user_id', $user_id);
-        $this->db->bind(':listen_at', $listen_at);
-        $this->db->bind(':last_listen', NULL);
-        if ($this->db->execute()) {
-            $result = true;
-        } else {
-            $result = false;
-        }
-        $id_listen = $this->db->last_id();
-        $this->db->query('INSERT INTO detail_user_listen ( id_song,id_listen) VALUES (:id_song,:id_listen)');
-        $this->db->bind(':id_song', $id_song);
-        $this->db->bind(':id_listen', $id_listen);
-        if ($this->db->execute()) {
-            $result = true;
-        } else {
-            $result = false;
-        }
-        return $result;
-    }
-    
 
     public function getIdUserActivity($user_id,$id_song) {
         $this->db->query('SELECT * FROM lichsu WHERE user_id = :user_id AND id_song = :id_song ');

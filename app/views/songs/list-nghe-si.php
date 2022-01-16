@@ -10,7 +10,7 @@ require APPROOT . '/views/includes/navigation.php';
         <div class="row">
             <div class="line"></div>
             <div class="col-8">
-                <h3 class="mt-5 mb-3">Bài Hát</h3>
+                <h3 class="mt-5 mb-3">Nghệ sỹ</h3>
                 <div class="line mb-5"></div>
                 <div class="row">
                     <?php foreach ($data['nghesi'] as $post) : ?>

@@ -36,7 +36,7 @@ require APPROOT . '/views/includes/navigation.php';
                                                                                     echo ($data['song']->sg_id) ?>">
                      </div>
                      <div class="mb-3">
-                            <label for="id" class="form-label"> Thời gian nghe </label>
+                            <label for="id" class="form-label">Mã nghệ sĩ</label>
                             <input type="date" class="form-control" name="song_releasedate" value="<?php
                                                                                     echo ($data['song']->song_releasedate) ?>">
                      </div>
@@ -46,8 +46,3 @@ require APPROOT . '/views/includes/navigation.php';
        </div>
 </div>
 
-
-
-<?php
-require APPROOT . '/views/includes/footer.php';
-?>

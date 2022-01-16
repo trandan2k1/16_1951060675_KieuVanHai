@@ -13,7 +13,7 @@ require APPROOT . '/views/includes/navigation.php';
         <div class="row">
             <div class="line"></div>
             <div class="col-8">
-            <h3>Bài Hát</h3>
+            <h3>Nghệ Sỹ</h3>
             <?php foreach ($data['song'] as $post) : ?>
                 <div class="singerSong_item ">
                     <a class="mb-3 mt-3" href="<?php echo URLROOT; ?>/songs/baihat/?id=<?php echo $post->Id ?>"><?php echo $post->name ?></a>

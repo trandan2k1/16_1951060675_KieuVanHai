@@ -12,65 +12,57 @@ class Admin extends Controller
         if (isLoggedIn()) {
             if ($_SESSION['status'] == 2) {
                 $songs = $this->adminModel->getSongs();
-                // var_dump($songs);exit;
-
+                // var_dump($this->adminModel->getSongs());exit;
                 $data = [
-                    'title' => 'NhacVn', 
+                    'title' => 'NhacVn Admin',
                     'songs' => $songs
-  
                 ];
                 $this->view('admin/adminView', $data);
             } else {
                 $this->view('404');
             }
-        } 
-        else {
+        } else {
             $this->view('404');
         }
     }
-    
 
     public function edit()
     {
-        if (isLoggedIn()){
-            if ($_SESSION['status'] == 2){
-                if (isset($_GET['id'])){
-                    $id= $_GET['id'];
-                    $song =$this->adminModel->getSong($id);
-                    //check post
-                if($_SERVER['REQUEST_METHOD']=='POST') {
-                    //Sanitize post data
-                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if (isLoggedIn()) {
+            if ($_SESSION['status'] == 2) {
+                if ($_GET['id'] != NULL) {
+                    $id = $_GET['id'];
+                    $song = $this->adminModel->getSong($id);
+                    // Check POST
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        //Sanitize post data
+                        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                    $data_update = [
-                        'name'=> trim($_POST['name']),
-                        'img'=> trim($_POST['img']),
-                        'src'=> trim($_POST['src']),
-                        'cate_id'=> trim($_POST['cate_id']),
-                        'sg_id'=> trim($_POST['sg_id']),
-                        'song_releasedate'=> trim($_POST['song_releasedate'])
-                    ];
-                   $this->adminModel->updateSong($id, $data_update['name'], $data_update['img'], $data_update['src'] , $data_update['cate_id'] , $data_update['sg_id'],$data_update['song_releasedate']) ;
-                   header('location:' .URLROOT.'/admin/');
-            
+                        $data_update = [
+                            'name' => trim($_POST['name']),
+                            'img' => trim($_POST['img']),
+                            'src' => trim($_POST['src']),
+                            'cate_id' => trim($_POST['cate_id']),
+                            'sg_id' => trim($_POST['sg_id']),
+                            'song_releasedate' => trim($_POST['song_releasedate'])
+                        ];
+                        $this->adminModel->updateSong($id, $data_update['name'], $data_update['img'], $data_update['src'], $data_update['cate_id'], $data_update['sg_id'], $data_update['song_releasedate']);
+                        header('location:' . URLROOT . '/admin');
+                    } else {
+                        $data = [
+                            'title' => 'NhacVn Admin',
+                            'song' => $song
+                        ];
+                        $this->view('admin/adminEdit', $data);
+                    }
+                } else {
+                    $this->view('404');
                 }
-                else{
-                    $data =[
-                        'title'=>'NhacVn Admin',
-                        'song'=>$song
-                    ];
-                    $this->view('admin/adminEdit', $data);
-                }   
-                    
-                }
-            } else{
+            } else {
                 $this->view('404');
             }
-        } else{
+        } else {
             $this->view('404');
-
         }
-
-
     }
 }

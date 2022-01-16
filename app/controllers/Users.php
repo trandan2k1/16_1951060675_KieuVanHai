@@ -189,4 +189,29 @@ class Users extends Controller {
         unset($_SESSION['status']);
         header('location:' . URLROOT . '/users/login');
     }
+
+
+    public function baihatyeuthich(){
+        if (isLoggedIn()) {
+            $favarite_song = $this->userModel->getFavoriteSong($_SESSION['user_id']);
+            $data = [
+                'favarite_song' => $favarite_song
+            ];
+            $this->view('users/yeu-thich',$data);
+        } else {
+            header('location:' . URLROOT . '/users/login');
+        }
+    }
+
+    public function baihatdanghe(){
+        if (isLoggedIn()) {
+            $baihatdanghe = $this->userModel->baihatdanghe($_SESSION['user_id']);
+            $data = [
+                'baihatdanghe' => $baihatdanghe
+            ];
+            $this->view('users/nghe-gan-day',$data);
+        } else {
+            header('location:' . URLROOT . '/users/login');
+        }
+    }
 }
